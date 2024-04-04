@@ -23,7 +23,6 @@ import { Button } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import {toast} from "react-toastify";
 import LoaderOverlay from "../components/loadinOverlay";
-import useS3 from "../context/useS3Upload";
 
 const GET_CATEGORIES = gql`
 query{getCategories{
@@ -56,7 +55,6 @@ query{getCategories{
 `;
 
 const AddNewProduct = () => {
-  const { uploadImageOnS3 } = useS3();
 
   const fileRef = useRef(null);
   const location=useLocation();
@@ -293,18 +291,29 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
     const handleFileUpload = async (file) => {
       setLoading(true);
       try {
-        const uploadedUrl = await uploadImageOnS3({
-          file,
-          title: 'product',
-          type: 'product',
-        });        console.log(uploadedUrl, "uploaded url");
+        const formData = new FormData();
+        formData.append("file", file);
+        const response = await fetch(
+          "https://api.mymultimeds.com/api/file/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+        if (!response.ok) {
+          throw new Error(`Failed to upload file: ${response.statusText}`);
+        }
+        const responseData = await response.json();
+        const uploadedUrl = responseData.publicUrl;
+        console.log(uploadedUrl, "uploaded url");
         setProductImages((prevImages) => [...prevImages, uploadedUrl]);
       } catch (error) {
         console.error("Error uploading file:", error.message);
-      } finally {
-        setLoading(false);
+      }finally{
+        setLoading(false)
       }
     };
+  
   const removeProductImage = (image) => {
     setProductImages((prevImages) => prevImages.filter((img) => img !== image));
   };

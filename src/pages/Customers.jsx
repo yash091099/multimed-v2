@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import RemovedPP from "../assets/removedPP.png";
 import Loader from "../components/Loader";
 import LoaderOverlay from "../components/loadinOverlay";
-import useS3 from "../context/useS3Upload";
 
 const ADD_USER = gql`
   mutation AddUser($input: AddUserAdminInput!) {
@@ -21,7 +20,6 @@ const ADD_USER = gql`
 `;
 
 const AddUserModal = ({ isOpen, onClose,refetch, setLoad}) => {
-  const { uploadImageOnS3 } = useS3();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const fileRef = useRef(null);
@@ -41,22 +39,31 @@ useEffect(() => {
 },[loading])
 
 
-  const handleFileUpload = async (file) => {
-    setLoading(true);
-    try {
-      const uploadedUrl = await uploadImageOnS3({
-        file,
-        title: 'banner',
-        type: 'banner',
-      });      console.log(uploadedUrl, "uploaded url");
-      setProfilePicture(uploadedUrl);
-      setProfilePictureUri(uploadedUrl);
-    } catch (error) {
-      console.error("Error uploading file:", error.message);
-    } finally {
-      setLoading(false);
+const handleFileUpload = async (file) => {
+  setLoading(true);
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+    const response = await fetch(
+      "https://api.mymultimeds.com/api/file/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    if (!response.ok) {
+      throw new Error(`Failed to upload file: ${response.statusText}`);
     }
-  };
+    const responseData = await response.json();
+    const uploadedUrl = responseData.publicUrl;
+    setProfilePicture(uploadedUrl);
+    setProfilePictureUri(responseData.publicUrl);
+  } catch (error) {
+    console.error("Error uploading file:", error.message);
+  }finally{
+    setLoading(false);
+  }
+};
 
 
   const handleProfilePictureRemove = () => {
