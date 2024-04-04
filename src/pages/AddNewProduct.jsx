@@ -292,8 +292,8 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
       setLoading(true);
       try {
         // Check if file size is larger than 1MB
-        if (file.size > 1048576) {
-          toast.error('File size should not exceed 1 MB');
+        if (file.size > 2.5 * 1024 * 1024) {
+          toast.error('File size should not exceed 2.5 MB');
           setLoading(false);
           return;
         }
