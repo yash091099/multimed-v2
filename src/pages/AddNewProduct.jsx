@@ -291,6 +291,13 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
     const handleFileUpload = async (file) => {
       setLoading(true);
       try {
+        // Check if file size is larger than 1MB
+        if (file.size > 1048576) {
+          toast.error('File size should not exceed 1 MB');
+          setLoading(false);
+          return;
+        }
+    
         const formData = new FormData();
         formData.append("file", file);
         const response = await fetch(
@@ -300,19 +307,25 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
             body: formData,
           }
         );
+    
         if (!response.ok) {
           throw new Error(`Failed to upload file: ${response.statusText}`);
         }
+        
         const responseData = await response.json();
         const uploadedUrl = responseData.publicUrl;
         console.log(uploadedUrl, "uploaded url");
         setProductImages((prevImages) => [...prevImages, uploadedUrl]);
+        
       } catch (error) {
         console.error("Error uploading file:", error.message);
-      }finally{
-        setLoading(false)
+        // If you're using a state to display the error message to the user,
+        // you might want to update that state here.
+      } finally {
+        setLoading(false);
       }
     };
+    
   
   const removeProductImage = (image) => {
     setProductImages((prevImages) => prevImages.filter((img) => img !== image));
