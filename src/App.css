@@ -1,0 +1,67 @@
+body {
+  @apply leading-[normal] m-0;
+  /* @apply pt-[4.5rem]; */
+  @apply lg:pt-0;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.checkbox-shadow {
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.06) inset;
+}
+/* Loader.css */
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader-container p {
+  margin-top: 10px;
+  color: #ffffff;
+}
+.table-scroll{
+  max-height: 489px !important;
+  overflow: scroll;
+}
+.coupon-card-container {
+  transition: transform 0.1s ease-in-out;
+  will-change: transform;
+}
+
+.coupon-card-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.status-tag {
+  display: block;
+}
+
+.discount-tag {
+  display: block;
+}
+.slick-arrow{
+  display: none !important;
+}
