@@ -4,18 +4,27 @@ import BackArrow from "../assets/backArrow.svg";
 import RemovedPP from "../assets/removedPP.png";
 import SaveChangesModal from "../components/SaveChangesModal";
 import { Link } from "react-router-dom";
-import { ADD_DEPARTMENT_USER, GET_ADDED_DEPARTMENTS } from "../context/mutation";
-import {  useMutation, useQuery } from "@apollo/client";
+import {  GET_ADDED_DEPARTMENTS } from "../context/mutation";
+import {  useMutation, useQuery ,gql} from "@apollo/client";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import LoaderOverlay from "../components/loadinOverlay";
+const ADD_DEPARTMENT_USER_V2=gql`
+mutation addUser($fullName: String!,$password: String!,$contactNumber: String!,$email: String!,$profilePicture: String!,$role: String!,$departmentId: ID!) {
+  addUser(input: { fullName: $fullName, password: $password, contactNumber: $contactNumber, email: $email, profilePicture: $profilePicture, role: $role, departmentId: $departmentId }) {
+    status
+    message
+  }
+}`;
+
 const AddUser = () => {
   const navigate=useNavigate();
   const[departmentList,setDepartmentList]=useState([]);
-  const [addUser] = useMutation(ADD_DEPARTMENT_USER);
+  const [addUser] = useMutation(ADD_DEPARTMENT_USER_V2);
   const  { data : departments } = useQuery(GET_ADDED_DEPARTMENTS);
   const fileRef = useRef(null);
   const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [dept, setDept] = useState("");
@@ -30,6 +39,7 @@ const AddUser = () => {
     email: "",
     phone: "",
     dept: "",
+    password: "",
     jobTitle: "",
   });
 
@@ -48,6 +58,8 @@ const AddUser = () => {
       setEmail(value);
     } else if (field === "phone") {
       setPhone(value);
+    }  else if (field === "password") {
+      setPassword(value);
     } else if (field === "dept") {
       setDept(value);
     } else if (field === "jobTitle") {
@@ -119,6 +131,9 @@ const AddUser = () => {
     if (!jobTitle?.trim()) {
       errors.jobTitle = "JOB TITLE is required";
     }
+    if (!password?.trim()) {
+      errors.password = "PASSWORD is required";
+    }
     setFormErrors(errors);
 
     if (Object.keys(errors).length > 0) {
@@ -136,6 +151,7 @@ const AddUser = () => {
         contactNumber:phone,
         departmentId:departmentList?.find((d)=>d.name===dept)?.id,
         role:jobTitle,
+        password:password,
         profilePicture: profilePictureUri,
       };
 
@@ -166,24 +182,18 @@ const AddUser = () => {
 
   return (
     <div className="w-full flex flex-col md:p-12 py-8 px-3 md:gap-12 gap-6 bg-white">
-      {/* Heading */}
       <div className="flex gap-1 items-center">
         <Link to="/home/users">
           <img src={BackArrow} alt="back arrow" className="w-6 h-6" />
         </Link>
-        <h1 className="md:text-2xl text-xl font-HelveticaNeueBold drea">
+        <h1 className="md:text-2xl text-xl font-HelveticaNeueBold">
           Add User
         </h1>
       </div>
-
-      {/* Main */}
       <div name="profile" className="w-full flex flex-col gap-4">
-        {/* Heading */}
-        <h1 className=" font-HelveticaNeueMedium md:text-[1.125rem] text-[#0F172A]">
+        <h1 className="font-HelveticaNeueMedium md:text-[1.125rem] text-[#0F172A]">
           Profile
         </h1>
-
-        {/* Pfp */}
         <div className="flex flex-col gap-2">
           <h2 className="text-[0.625rem] font-HelveticaNeueMedium uppercase text-[#94A3B8]">
             PROFILE PICTURE
@@ -192,7 +202,7 @@ const AddUser = () => {
             <img
               src={profilePicture || RemovedPP}
               alt="profile picture"
-              className=" w-[4.5rem] h-[4.5rem] cursor-pointer rounded-full"
+              className="w-[4.5rem] h-[4.5rem] cursor-pointer rounded-full"
             />
             <button
               className="text-[0.75rem] font-HelveticaNeueMedium text-[#031B89]"
@@ -214,14 +224,11 @@ const AddUser = () => {
             </button>
           </div>
         </div>
-
-        {/* Details */}
         <div className="flex flex-col gap-2">
           <h2 className="text-[0.625rem] font-HelveticaNeueMedium uppercase text-[#94A3B8]">
             PERSONAL DETAILS
           </h2>
           <div className="gap-6 flex flex-col">
-            {/* Name and email */}  
             <div className="flex lg:flex-row flex-col py-1 gap-6">
               <ProfileInput
                 title="name"
@@ -240,28 +247,35 @@ const AddUser = () => {
                 big
               />
             </div>
-            {/* Phone number */}
-            <ProfileInput
-              title="phone number"
-              value={phone}
-              isNumber={true}
-              setValue={(value) => handleInputChange("phone", value)}
-              isError={!!formErrors.phone}
-              errorMsg={formErrors.phone}
-              big
-            />
+            <div className="flex lg:flex-row flex-row py-1 gap-6">
+              <ProfileInput
+                title="phone number"
+                value={phone}
+                isNumber={true}
+                setValue={(value) => handleInputChange("phone", value)}
+                isError={!!formErrors.phone}
+                errorMsg={formErrors.phone}
+                big
+              />
+              <ProfileInput
+                title="password"
+                value={password}
+                isNumber={false}
+                setValue={(value) => handleInputChange("password", value)}
+                isError={!!formErrors.password}
+                errorMsg={formErrors.password}
+                big
+              />
+            </div>
           </div>
         </div>
-
-        {/* Job Details */}
         <div className="flex flex-col gap-2">
           <h2 className="text-[0.625rem] font-HelveticaNeueMedium uppercase text-[#94A3B8]">
             JOB INFORMATION
           </h2>
           <div className="gap-6 flex flex-col">
-            {/* Name and email */}
             <div className="flex lg:flex-row flex-col py-1 gap-6">
-              <ProfileInput
+            <ProfileInput
                 title="dept"
                 value={dept}
                 setValue={(value) => handleInputChange("dept", value)}
@@ -284,8 +298,6 @@ const AddUser = () => {
           </div>
         </div>
       </div>
-
-      {/* buttons */}
       <div className="flex md:flex-row flex-col md:gap-6 gap-3">
         <button
           onClick={handleFormSubmit}
@@ -300,11 +312,11 @@ const AddUser = () => {
         >
           Cancel
         </button>
-       
       </div>
       {loading && <LoaderOverlay />}
     </div>
   );
+  
 };
 
 export default AddUser;

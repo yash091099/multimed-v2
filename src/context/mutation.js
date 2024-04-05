@@ -216,15 +216,6 @@ query{getAddedDepartments{
 }}
 `
 
-export const ADD_DEPARTMENT_USER=gql`
-mutation addDepartment($fullName: String!,$contactNumber: String!,$email: String!,$profilePicture: String!,$role: String!,$departmentId: ID!) {
-  addUser(input: { fullName: $fullName, contactNumber: $contactNumber, email: $email, profilePicture: $profilePicture, role: $role, departmentId: $departmentId }) {
-    status
-    message
-  }
-}
-
-`
 
 export const UPDATE_USER=gql`
   mutation updateUser($fullName: String!,$contactNumber: String!,$email: String!,$role: String!,$departmentId: ID!,$userId: ID!) {
