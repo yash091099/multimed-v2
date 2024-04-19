@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function AddNewStock(props) {
   const [type, setType] = useState("Boxes");
-  const[data]=useState(props.dataToUpdate)
+  const[data]=useState(props.datatoUpdate)
+  console.log(data,"data----------------------------")
   const [manufacturer, setManufacturer] = useState(data?.manufacturer||"");
   const [boxes, setBoxNo] = useState(data?.boxes||"");
   const [sheets, setSheetNo] = useState(data?.sheets||"");
@@ -16,6 +17,10 @@ export default function AddNewStock(props) {
   const [manufacturingDate, setManufacturerDate] = useState(data?.manufacturingDate||"");
   const [expiryDate, setExpiryDate] = useState(data?.expiryDate||"");
   const[boxMrp, setBoxMrp] = useState(data?.boxMrp||"");
+  const[id] = useState(data?.id||null);
+
+  
+
   const [errors, setErrors] = useState({
     manufacturer: "",
     boxes: "",
@@ -108,15 +113,15 @@ export default function AddNewStock(props) {
   
     // Boxes validation
     if (type === "Boxes") {
-      if (!boxes.trim() || isNaN(boxes)) {
+      if (!boxes?.trim() || isNaN(boxes)) {
         newErrors.boxes = "Box number is required and must be numeric";
         valid = false;
       }
-      if (!sheets.trim() || isNaN(sheets)) {
+      if (!sheets?.trim() || isNaN(sheets)) {
         newErrors.sheets = "Sheet number is required and must be numeric";
         valid = false;
       }
-      if (!noOfTabletsPerSheet.trim() || isNaN(noOfTabletsPerSheet)) {
+      if (!noOfTabletsPerSheet?.trim() || isNaN(noOfTabletsPerSheet)) {
         newErrors.noOfTabletsPerSheet = "Number of tablets per sheet is required and must be numeric";
         valid = false;
       }
@@ -124,11 +129,11 @@ export default function AddNewStock(props) {
   
     // Units validation
     if (type === "Units") {
-      if (!units.trim() || isNaN(units)) {
+      if (!units?.trim() || isNaN(units)) {
         newErrors.units = "Number of units is required and must be numeric";
         valid = false;
       }
-      if (!unitWeight.trim() || isNaN(unitWeight)) {
+      if (!unitWeight?.trim() || isNaN(unitWeight)) {
         newErrors.unitWeight = "Unit weight is required and must be numeric";
         valid = false;
       }
@@ -147,13 +152,13 @@ export default function AddNewStock(props) {
     }
   
     // MRP per sheet validation
-    if (!mrpPerSheet.trim() || isNaN(mrpPerSheet)) {
+    if (!mrpPerSheet?.trim() || isNaN(mrpPerSheet)) {
       newErrors.mrpPerSheet = "MRP per sheet is required and must be numeric";
       valid = false;
     }
   
     // Box MRP validation
-    if (!boxMrp.trim() || isNaN(boxMrp)) {
+    if (!boxMrp?.trim() || isNaN(boxMrp)) {
       newErrors.boxMrp = "Box MRP is required and must be numeric";
       valid = false;
     }
@@ -190,48 +195,33 @@ export default function AddNewStock(props) {
   
   
   const handleSave = () => {
-    if (validateForm()) {
-      const payload = {
+    console.log(id,'-----------------id')
+    if (data?true:validateForm()) {
+      let payload = {
         manufacturer,
-        boxes:Number(boxes),
-        sheets:Number(sheets),
-        noOfTabletsPerSheet:Number(noOfTabletsPerSheet),
-       stockType:type,
-        mrpPerSheet:Number(mrpPerSheet),
+        boxes: Number(boxes),
+        sheets: Number(sheets),
+        noOfTabletsPerSheet: Number(noOfTabletsPerSheet),
+        stockType: type,
+        mrpPerSheet: Number(mrpPerSheet),
         batchNumber,
         manufacturingDate,
         expiryDate,
-        noOfUnits:Number(units),
-        weightPerUnit:Number(unitWeight),
-        noOfGrams:Number(grams),
-        noOfKgs:Number(kgs),
-        boxMrp:Number(boxMrp),
-        groupNumber:1,
-
-
+        noOfUnits: Number(units),
+        weightPerUnit: Number(unitWeight),
+        noOfGrams: Number(grams),
+        noOfKgs: Number(kgs),
+        boxMrp: Number(boxMrp),
+        groupNumber: 1,
       };
-      // const payload = {
 
-      //   type,
-      //   manufacturer,
-      //   boxes:Number(boxes),
-      //   sheets:Number(sheets),
-      //   noOfTabletsPerSheet:Number(noOfTabletsPerSheet),
-      //   units,
-      //   unitWeight,
-      //   grams,
-      //   kgs,
-      //   mrpPerSheet:Number(mrpPerSheet),
-      //   batchNumber,
-      //   manufacturingDate,
-      //   expiryDate,
-      //   boxMrp
-      // };
-      console.log(payload);
-      
-      props.stockData(payload);
-      props.setNewStockModal(false)
-    }else{
+      if(id){
+        payload['id'] = id
+      }
+  
+      props.stockData(payload);  // Send data back to parent component
+      props.setNewStockModal(false);  // Close modal
+    } else {
       setTouched({
         manufacturer: true,
         boxes: true,
@@ -249,6 +239,7 @@ export default function AddNewStock(props) {
       });
     }
   };
+  
 
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0">
@@ -259,7 +250,7 @@ export default function AddNewStock(props) {
       <div className="fixed top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] w-[724px] bg-white rounded-[8px]">
         <div className="flex justify-between w-full px-[16px] py-[8px]">
           <h1 className="text-[16px] font-HelveticaNeueMedium leading-[20px]">
-            Add New Stock
+            {data ? "Update" : "Add"}  Stock
           </h1>
           <button
             className="text-[24px]"
@@ -579,7 +570,7 @@ export default function AddNewStock(props) {
               handleSave();
             }}
           >
-            {props?.dataToUpdate ? 'Update' : 'Add'} Stock
+            {data ? 'Update' : 'Add'} Stock
           </button>
         </div>
       </div>

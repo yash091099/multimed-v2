@@ -5,7 +5,7 @@ import menuButton from '../assets/menuButton.svg';
 import CancelOrderModal from './CancelOrderModal';
 import PrescriptionApprovalModal from './PrescriptionApprovalModal';
 import { gql } from '@apollo/client';
-
+import {toast} from 'react-toastify';
 const CANCEL_ORDER = gql`
   mutation CancelOrder($input: ID!) {
     cancelOrder(input: $input) {
@@ -43,11 +43,17 @@ export default function OrderTuple({ item, orderType, refetch }) {
   const [cancelOrder] = useMutation(CANCEL_ORDER, {
     variables: { input: item.userId },
     onCompleted: () => {
-      refetch();
-      setCancelOrderModal(false);
+        refetch();
+        setCancelOrderModal(false);
+        // toast.success('Order successfully cancelled!');
+    },
+    onError: (error) => {
+        // Log the error to the console or handle it as needed
+        console.error('Error cancelling order:', error);
+        // Display a toast message
+        toast.error('Failed to cancel order: ' + error.message);
     }
-  });
-
+});
   function formatDate(dateString) {
     const date = new Date(dateString);
   
@@ -96,8 +102,8 @@ export default function OrderTuple({ item, orderType, refetch }) {
       </div>
       <p className="flex-1 text-left">{item?.address?.pincode||'xxxxxx'}</p>
       <div className="flex flex-col gap-[4px] flex-1 text-left">
-        <p>{item?.user?.name||'--'}</p> {/* Placeholder for customer details */}
-        <p>{item?.user?.phoneNumber || '--'} | {item?.user?.email || '--'}</p>
+        <p>{item?.user?.fullName||'--'}</p> {/* Placeholder for customer details */}
+        <p>{item?.user?.contactNumber || '--'} | {item?.user?.email || '--'}</p>
       </div>
       {orderType === 0 && (
         <div className="flex justify-center items-center flex-1 text-left">

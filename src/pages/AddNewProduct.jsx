@@ -64,6 +64,7 @@ console.log(productData,'productData')
   const navigate = useNavigate();
   const [option, setOption] = useState(productData?.published ? 1 : 0);
   const [newStockModal, setNewStockModal] = useState(undefined);
+  const [newStock, setNewStock] = useState(productData?.stocks||[]);
   const [sortBy, setSortBy] = useState("All");
   const { productAddType } = useContext(Context);
   const [stockData, setStockData] = useState(productData?.stocks||[]);
@@ -139,9 +140,9 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
   // Function to handle adding a new product
   const handleAddProduct = async() => {
     // Prepare input data for the mutation
-    const input = {
+    let input = {
       points: points,
-      stocks: stockData,
+      stocks: newStock,
       productImages: productImages,
       couponId: couponId,
       origin: origin,
@@ -154,6 +155,9 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
 
       // discount:coupons?.filter((coupon)=>coupon?.id===couponId)[0]?.percentage || 0
     };
+
+    input.stocks.manufacturingDate=new Date(Number(input?.stocks?.manufacturingDate));
+    input.stocks.expiryDate=new Date(Number(input?.stocks?.expiryDate));
     console.log(input?.couponId,permission)
 
     if(!productData){
@@ -199,7 +203,7 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
          toast.error(response.data?.addNewProductToCategory?.message)
        }
     }else{
-      let newData = stockData?.map(({ __typename, ...stock }) => {
+      let newData = newStock?.map(({ __typename, ...stock }) => {
         return {
           ...stock,
           noOfUnits: stock.noOfUnits ?? 0,
@@ -207,8 +211,8 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
           boxMrp: stock.boxMrp ?? 0,
           noOfGrams: stock.noOfGrams ?? 0,
           noOfKgs: stock.noOfKgs ?? 0,
-          manufacturingDate: stock?.manufacturingDate ? new Date(Number(stock.manufacturingDate)) : null,
-          expiryDate: stock?.expiryDate ? new Date(Number(stock.expiryDate)) : null
+          manufacturingDate: new Date(Number(stock?.manufacturingDate)),
+          expiryDate: new Date(Number(stock?.expiryDate)) 
         };
       });
       
@@ -256,9 +260,11 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
     }
   };
 
-  const handleStockData = (data) => {
-    setStockData((prevStockData) => [...prevStockData, data]);
-  };
+  const handleStockData = (newStock) => {
+    console.log(newStock,'-----------new stock');
+    setNewStock([newStock])
+    setStockData([newStock]);
+};
 
 
  
@@ -268,27 +274,13 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
     );
   };
 
-  useEffect(() => {
-    console.log(stockData);
-  }, [stockData]);
 
-  const updateStockData = (data) => {
-    setStockData((prevStockData) =>
-      prevStockData.map((stock) => {
-        if (stock.manufacturer === data.manufacturer) {
-          return data;
-        }
-        return stock;
-      })
-    );
-    setdataToUpdate({});
-  };
 
   const filteredstockData = searchQuery?.trim()
-    ? stockData?.filter((user) =>
+    ? newStock?.filter((user) =>
         user.manufacturer?.toLowerCase()?.includes(searchQuery?.toLowerCase())
       )
-    : stockData;
+    : newStock;
 
     const handleFileUpload = async (file) => {
       setLoading(true);
@@ -524,7 +516,7 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
           </h1>
 
           <div className="flex gap-4 ">
-            <div className="w-[19.625rem] rounded border border-[#CBD5E1] bg-white py-0.5 px-2">
+            {/* <div className="w-[19.625rem] rounded border border-[#CBD5E1] bg-white py-0.5 px-2">
               <div className="p-2 flex gap-2 items-center">
                 <img src={SearchIcon} alt="search icon" className="w-6 h-6" />
 
@@ -536,29 +528,30 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
                   value={searchQuery}
                 />
               </div>
-            </div>
+            </div> */}
 
-            <button
+          { stockData?.length<1 && <button
               className="flex gap-2 items-center py-2 px-3 rounded border border-[#031B89] bg-white"
-              onClick={() => setNewStockModal(true)}
+              onClick={() => {setNewStockModal(true); setdataToUpdate({})}}
             >
               <img src={MenuAddPlus} alt="plus" className="w-6 h-6" />
 
               <h1 className="text-sm font-HelveticaNeueMedium text-[#031B89]">
                 Add Product Stock
               </h1>
-            </button>
+            </button>}
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-[24px]">
           {filteredstockData?.length ? (
-            stockData?.map((data) => {
+            newStock?.map((data,index) => {
               return (
                 <ProductCard
                   stockData={data}
                   removeManufacturer={removeManufacturer}
                   setStockDetails={setNewStockModal}
                   setdataToUpdate={setdataToUpdate}
+                index={stockData.length}
                 />
               );
             })
@@ -645,7 +638,6 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
       {newStockModal && (
         <AddNewStock
           setNewStockModal={setNewStockModal}
-          updateStockData={updateStockData}
           datatoUpdate={dataToUpdate}
           stockData={handleStockData}
         />
