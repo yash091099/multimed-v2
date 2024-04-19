@@ -9,12 +9,7 @@ const GET_PROCESSING_ORDER = gql`
 query{getAllProcessingOrders{
   status
   message
-  prescriptions{
-    id
-    url
-    isApproved
-    
-  }
+
   orders{
     id
     status
@@ -54,12 +49,7 @@ const GET_CANCELLED_ORDER = gql`
 query{getAllCancelledOrders{
   status
   message
-  prescriptions{
-    id
-    url
-    isApproved
-    
-  }
+
   orders{
     id
     status
@@ -99,12 +89,7 @@ const GET_ORDER_HISTORY = gql`
 query{getAllOrderHistory{
   status
   message
-  prescriptions{
-    id
-    url
-    isApproved
-    
-  }
+ 
   orders{
     id
     status
