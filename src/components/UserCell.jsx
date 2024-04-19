@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import UserPicture from "../assets/authorImage.png";
 import { Link } from "react-router-dom";
@@ -7,12 +7,6 @@ const UserCell = (tableData,key) => {
 const toUpperCase = (str) => {
   return str?.toUpperCase();
 }
-const toCamelCase = (str) => {
-  return str?.replace(/-./g, x => x[1].toUpperCase())
-}
-useEffect(() => {
-  console.log('tableData',tableData)
-},[])
   return (
     <div key={key} className="flex md:flex-row flex-col md:justify-between gap-1 border-b border-[#E2E8F0] bg-white md:py-6 md:px-12 p-3 hover:bg-[#DBEAFE]">
       <Link
@@ -20,10 +14,10 @@ useEffect(() => {
         to="/home/edit_user" state={tableData?.tableData}
         className="lg:w-[11.25rem] md:w-[8rem] md:mb-0 mb-2 flex gap-2 items-center"
       >
-        <img src={tableData?.tableData?.profilePicture || UserPicture} alt="user image" className="w-6 h-6" />
+        <img src={UserPicture} alt="user image" className="w-6 h-6" />
 
         <h1 className="md:text-sm text-xs font-HelveticaNeueMedium text-[#0F172A]">
-          {toCamelCase(tableData?.tableData?.fullName)||'--'}
+          {toUpperCase(tableData?.tableData?.fullName)||'--'}
         </h1>
       </Link>
 

@@ -126,6 +126,7 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
   },[categories])
 
   const [productName, setProductName] = useState(productData?.productName||"");
+  const [productWeightInGrams, setProductWeightInGrams] = useState(productData?.productWeightInGrams||"");
     const [isChecked,setIsChecked] = useState(productData?.isPrescriptionNeeded||true);
 
   useEffect(() => {
@@ -148,6 +149,7 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
       composition: composition,
       prescriptionRequired: isChecked,
       productName: productName,
+      productWeightInGrams:productWeightInGrams,
       published: option === 1 ? true : false,
 
       // discount:coupons?.filter((coupon)=>coupon?.id===couponId)[0]?.percentage || 0
@@ -452,8 +454,18 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
               dropdownField
               dropdownList={formattedHealthConcernData}
             />
-
+   <ProfileInput
+                        title="Product Weight In Grams"
+                        name="productWeightInGrams"
+                        value={productWeightInGrams}
+                        big
+                        wide
+                        setValue={(value) => setProductWeightInGrams( value)}
+                        // errorMsg={errors.productName}
+                        // isError={errors?.productName}
+                      />
           </div>}
+          
         </div>
       </div>
 

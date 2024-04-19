@@ -9,9 +9,10 @@ export function AppContext({children}){
     const [showAddressPopUp, setShowAddressPopUp] = useState(false);
     const [saveModal, setSaveModal] = useState(false);
     const [showDeletePopUp, setShowDeletePopUp] = useState(undefined);
+    const [refetchCustomers, setRefetchCustomers] = useState(false);
     const [productAddType, setProductAddType] = useState(0);
     return (
-        <Context.Provider value={{userLoggedIn, setUserLoggedIn, showCouponPopUp, setShowCouponPopUp,showAddressPopUp, setShowAddressPopUp, showDeletePopUp, setShowDeletePopUp, saveModal, setSaveModal, productAddType, setProductAddType }} >
+        <Context.Provider value={{userLoggedIn,refetchCustomers, setRefetchCustomers, setUserLoggedIn, showCouponPopUp, setShowCouponPopUp,showAddressPopUp, setShowAddressPopUp, showDeletePopUp, setShowDeletePopUp, saveModal, setSaveModal, productAddType, setProductAddType }} >
             {children}
         </Context.Provider>
     )

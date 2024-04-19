@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState,useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useQuery, useMutation, gql } from "@apollo/client";
 import SearchIcon from "../assets/searchIcon.svg";
@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import RemovedPP from "../assets/removedPP.png";
 import Loader from "../components/Loader";
 import LoaderOverlay from "../components/loadinOverlay";
+import Context from "../context/AppContext";
 
 const ADD_USER = gql`
   mutation AddUser($input: AddUserAdminInput!) {
@@ -20,9 +21,15 @@ const ADD_USER = gql`
 `;
 
 const AddUserModal = ({ isOpen, onClose,refetch, setLoad}) => {
+  const {setRefetchCustomers,refetchCustomers}=useContext(Context)
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const fileRef = useRef(null);
+
+  useEffect(() => {
+    refetch()
+    
+  },[refetchCustomers])
 
   const [contactNumber, setContactNumber] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
@@ -262,7 +269,7 @@ const [loader,setLoading]=useState()
 
   useEffect(() => {
     if (data) {
-      const filteredUsers = data.getUsers.users.filter(
+      const filteredUsers = data.getUsers?.users.filter(
         (item) => item.role === "USER"
       );
       setUsers(filteredUsers);
@@ -275,7 +282,7 @@ const [loader,setLoading]=useState()
     setSearchInput(value);
     const filteredData =value? users.filter(
       (user) =>
-        user.fullName?.toLowerCase().includes(value) ||
+        user?.fullName?.toLowerCase().includes(value) ||
         user?.email?.toLowerCase().includes(value) ||
         (user.addresses && user.addresses[0]?.pincode.includes(value))
     ):users ;
@@ -284,7 +291,7 @@ const [loader,setLoading]=useState()
 
   const indexOfLastUser = currentPage * usersPerPage;
 const indexOfFirstUser = indexOfLastUser - usersPerPage;
-const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+const currentUsers = filteredUsers?.slice(indexOfFirstUser, indexOfLastUser);
 
 
   const handleChangePage = (event, value) => {
@@ -335,7 +342,7 @@ const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
   const filterUsers = (search, date) => {
     const selectedDate = new Date(date);
-    const filteredData = users.filter((user) => {
+    const filteredData = users?.filter((user) => {
         const fullNameMatch = user.fullName
             ? user.fullName.toLowerCase().includes(search)
             : true;

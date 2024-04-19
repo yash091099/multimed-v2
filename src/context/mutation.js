@@ -157,7 +157,6 @@ query GetDepartmentUsers($input:ID!){
     email
     walletBalance
     role
-    profilePicture
     currentAddress{
  			  id
         houseNumber
