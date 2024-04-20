@@ -206,7 +206,7 @@ export default function AddNewStock(props) {
   
   
   const handleSave = () => {
-    console.log(id,'-----------------id')
+    console.log(id,mrpPerSheet,'-----------------id')
     if (data?true:validateForm()) {
       let payload = {
         manufacturer,

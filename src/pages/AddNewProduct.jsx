@@ -156,9 +156,6 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
 
       // discount:coupons?.filter((coupon)=>coupon?.id===couponId)[0]?.percentage || 0
     };
-
-    input.stocks.manufacturingDate=localStorage.getItem("manufacturingDate");
-    input.stocks.expiryDate=localStorage.getItem("expiryDate");
     console.log(input?.couponId,permission)
 
     if(!productData){
@@ -212,8 +209,8 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
           boxMrp: stock.boxMrp ?? 0,
           noOfGrams: stock.noOfGrams ?? 0,
           noOfKgs: stock.noOfKgs ?? 0,
-          manufacturingDate: new Date(Number(stock?.manufacturingDate)),
-          expiryDate: new Date(Number(stock?.expiryDate)) 
+          manufacturingDate: stock?.manufacturingDate,
+          expiryDate:stock?.expiryDate 
         };
       });
       
@@ -244,8 +241,6 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
         archived:option===1 ? false : true,
         // discount:coupons?.filter((coupon)=>coupon?.id===couponId)[0]?.percentage || 0
       };
-      input.stocks[0].manufacturingDate=localStorage.getItem("manufacturingDate");
-      input.stocks[0].expiryDate=localStorage.getItem("expiryDate");
     
       const response = await updateProduct({
         variables: {

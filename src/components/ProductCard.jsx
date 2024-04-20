@@ -26,27 +26,46 @@ export default function ProductCard({ setStockDetails, stockData, removeManufact
     if (!str) return "";
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
-  const formatDateString = (dateString) => {
-    if (!dateString) return "";
-    const date = new Date(dateString);
+  const formatDateString = (dateInput) => {
+    if (!dateInput) return "N/A";
+  
+    // Check if the input is a timestamp (i.e., a number)
+    let date;
+    if (typeof dateInput === 'number' || (typeof dateInput === 'string' && /^\d+$/.test(dateInput))) {
+      // Convert timestamp to number if it is a string of digits
+      date = new Date(Number(dateInput));
+    } else {
+      // Handle as an ISO or other formatted date string
+      date = new Date(dateInput);
+    }
+  
     const options = { year: "numeric", month: "long", day: "numeric" };
-    return date?.toLocaleDateString("en-US", options); 
+    return date.toLocaleDateString("en-US", options);
   }
+  
 
   const handleEditClick = (e, stockData) => {
     e.stopPropagation();
     setStockDetails(true);
     setdataToUpdate(stockData);
   };
-
+  function formatString(timestamp) {
+    if (!timestamp) return "N/A";
+    const date = new Date(parseInt(timestamp));
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-indexed
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+  
   return (
     <div className='relative flex flex-col justify-between h-[200px] p-[20px] rounded-[12px] shadow-md border border-[#E2E8F0] bg-white hover:shadow-lg transition-shadow duration-150 ease-in-out'>
       <div>
         <h1 className='text-[#1E293B] text-[20px] leading-[1.4] font-semibold'>{toUpperCase(stockData?.manufacturer) || "N/A"}</h1>
         <div className='mt-[10px]'>
           <p className='text-[#475569] text-[16px] leading-[1.4] italic mb-[5px]'>Batch No: {stockData?.batchNumber || "N/A"}</p>
-          <p className='text-[#475569] text-[16px] leading-[1.4] italic'>Expiry Date: {formatDateString(localStorage.getItem('manufacturingDate'))|| "N/A"}</p>
-<p className='text-[#475569] text-[16px] leading-[1.4] italic'>Manufacturing Date: {formatDateString(localStorage.getItem('expiryDate')) || "N/A"}</p>
+          <p className='text-[#475569] text-[16px] leading-[1.4] italic'>Expiry Date: {formatDateString(stockData?.expiryDate)|| "N/A"}</p>
+<p className='text-[#475569] text-[16px] leading-[1.4] italic'>Manufacturing Date: {formatDateString(stockData?.manufacturingDate )|| "N/A"}</p>
 
           <p className='text-[#475569] text-[16px] leading-[1.4] italic'>Quantity: {getFormattedQuantity(stockData)}</p>
           <p className='text-[#475569] text-[16px] leading-[1.4] italic'>MRP: {stockData?.mrpPerSheet || "N/A"}</p>
