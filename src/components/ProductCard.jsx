@@ -26,6 +26,12 @@ export default function ProductCard({ setStockDetails, stockData, removeManufact
     if (!str) return "";
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
+  const formatDateString = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return date?.toLocaleDateString("en-US", options); 
+  }
 
   const handleEditClick = (e, stockData) => {
     e.stopPropagation();
@@ -39,8 +45,8 @@ export default function ProductCard({ setStockDetails, stockData, removeManufact
         <h1 className='text-[#1E293B] text-[20px] leading-[1.4] font-semibold'>{toUpperCase(stockData?.manufacturer) || "N/A"}</h1>
         <div className='mt-[10px]'>
           <p className='text-[#475569] text-[16px] leading-[1.4] italic mb-[5px]'>Batch No: {stockData?.batchNumber || "N/A"}</p>
-          <p className='text-[#475569] text-[16px] leading-[1.4] italic'>Expiry Date: {new Date(Number(stockData?.expiryDate)).toLocaleDateString() || "N/A"}</p>
-<p className='text-[#475569] text-[16px] leading-[1.4] italic'>Manufacturing Date: {new Date(Number(stockData?.manufacturingDate)).toLocaleDateString() || "N/A"}</p>
+          <p className='text-[#475569] text-[16px] leading-[1.4] italic'>Expiry Date: {formatDateString(localStorage.getItem('manufacturingDate'))|| "N/A"}</p>
+<p className='text-[#475569] text-[16px] leading-[1.4] italic'>Manufacturing Date: {formatDateString(localStorage.getItem('expiryDate')) || "N/A"}</p>
 
           <p className='text-[#475569] text-[16px] leading-[1.4] italic'>Quantity: {getFormattedQuantity(stockData)}</p>
           <p className='text-[#475569] text-[16px] leading-[1.4] italic'>MRP: {stockData?.mrpPerSheet || "N/A"}</p>

@@ -91,6 +91,7 @@ const [subCategory, setSubCategory] = useState(productData?.subCategory||"");
 const [healthConcernData]=useState(['respiratoryProblem','stomachProblem','bonesProblem','heartProblem','kidneyProblem']);
 const [subCategoryData]=useState(['medicine','device','essentials','overTheCounter']);
 
+
 // Convert health concern data into array of objects
 const formattedHealthConcernData = healthConcernData.map((item, index) => ({
   id: index,
@@ -156,8 +157,8 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
       // discount:coupons?.filter((coupon)=>coupon?.id===couponId)[0]?.percentage || 0
     };
 
-    input.stocks.manufacturingDate=new Date(Number(input?.stocks?.manufacturingDate));
-    input.stocks.expiryDate=new Date(Number(input?.stocks?.expiryDate));
+    input.stocks.manufacturingDate=localStorage.getItem("manufacturingDate");
+    input.stocks.expiryDate=localStorage.getItem("expiryDate");
     console.log(input?.couponId,permission)
 
     if(!productData){
@@ -243,6 +244,8 @@ console.log('Formatted Subcategory Data:', formattedSubCategoryData);
         archived:option===1 ? false : true,
         // discount:coupons?.filter((coupon)=>coupon?.id===couponId)[0]?.percentage || 0
       };
+      input.stocks[0].manufacturingDate=localStorage.getItem("manufacturingDate");
+      input.stocks[0].expiryDate=localStorage.getItem("expiryDate");
     
       const response = await updateProduct({
         variables: {

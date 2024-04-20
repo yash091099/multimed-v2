@@ -19,6 +19,15 @@ export default function AddNewStock(props) {
   const[boxMrp, setBoxMrp] = useState(data?.boxMrp||"");
   const[id] = useState(data?.id||null);
 
+  useEffect(() => {
+    if(data?.manufacturingDate){
+      localStorage.setItem('manufacturingDate',data?.manufacturingDate)
+
+    }
+    if(data?.expiryDate){
+      localStorage.setItem('expiryDate',data?.expiryDate)
+    }
+  },[data])
   
 
   const [errors, setErrors] = useState({
@@ -85,9 +94,11 @@ export default function AddNewStock(props) {
         setBatchNumber(value);
         break;
       case "manufacturingDate":
+        localStorage.setItem("manufacturingDate", value);
         setManufacturerDate(value);
         break;
       case "expiryDate":
+        localStorage.setItem("expiryDate", value);
         setExpiryDate(value);
         break;
       case "boxMrp":
