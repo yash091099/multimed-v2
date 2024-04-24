@@ -1,0 +1,259 @@
+.top-bar2-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+  }
+  .top-bar2-frame94 {
+    gap: 8px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 8px 32px;
+    overflow: hidden;
+    align-items: center;
+    flex-shrink: 0;
+    border-color: rgba(226, 232, 240, 1);
+    border-style: solid;
+    border-width: 1px 0;
+    justify-content: space-between;
+    background-color: var(--dl-color-shades-white);
+  }
+  .top-bar2-frame-nav-barlinks {
+    gap: 32px;
+    display: flex;
+    padding: 4px 0;
+    align-items: flex-start;
+  }
+  .top-bar2-frame-nav {
+    gap: 4px;
+    display: flex;
+    padding: 4px;
+    align-items: center;
+  }
+  .top-bar2-frame109 {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .top-bar2-text {
+    color: var(--dl-color-slate-600);
+    height: auto;
+    text-align: left;
+    line-height: 20px;
+  }
+  .top-bar2-frame-nav1 {
+    gap: 4px;
+    display: flex;
+    padding: 4px;
+    align-items: center;
+  }
+  .top-bar2-frame1091 {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .top-bar2-text02 {
+    color: var(--dl-color-slate-600);
+    height: auto;
+    text-align: left;
+    line-height: 20px;
+  }
+  .top-bar2-frame-nav2 {
+    gap: 4px;
+    display: flex;
+    padding: 4px;
+    align-items: center;
+  }
+  .top-bar2-frame1092 {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .top-bar2-text04 {
+    color: var(--dl-color-slate-600);
+    height: auto;
+    text-align: left;
+    line-height: 20px;
+  }
+  .top-bar2-frame-nav3 {
+    gap: 4px;
+    display: flex;
+    padding: 4px;
+    align-items: center;
+  }
+  .top-bar2-frame1093 {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .top-bar2-text06 {
+    color: var(--dl-color-slate-600);
+    height: auto;
+    text-align: left;
+    line-height: 20px;
+  }
+  .top-bar2-frame-nav4 {
+    gap: 4px;
+    display: flex;
+    padding: 4px;
+    align-items: center;
+  }
+  .top-bar2-frame1094 {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .top-bar2-text08 {
+    color: var(--dl-color-slate-600);
+    height: auto;
+    text-align: left;
+    line-height: 20px;
+  }
+  .top-bar2-frame-nav5 {
+    gap: 4px;
+    display: flex;
+    padding: 4px;
+    align-items: center;
+  }
+  .top-bar2-frame1095 {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .top-bar2-text10 {
+    color: var(--dl-color-slate-600);
+    height: auto;
+    text-align: left;
+    line-height: 20px;
+  }
+  .top-bar2-frame97 {
+    gap: 48px;
+    display: flex;
+    padding: 4px 16px;
+    align-items: center;
+  }
+  .top-bar2-frame105 {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .top-bar2-moneycashbanknotesstyle3 {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .top-bar2-group {
+    top: -5.000000058430487e-8px;
+    left: -5.000000058430487e-8px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .top-bar2-path {
+    top: 4px;
+    left: 6px;
+    width: 16px;
+    height: 12px;
+    position: absolute;
+  }
+  .top-bar2-rectangle {
+    top: 7.999989986419678px;
+    left: 2px;
+    width: 16px;
+    height: 12px;
+    position: absolute;
+    border-color: rgba(116, 135, 255, 1);
+    border-style: solid;
+    border-width: 1.5px;
+    border-radius: 2.5px;
+  }
+  .top-bar2-oval {
+    top: 11.999990463256836px;
+    left: 8px;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    border-color: rgba(116, 135, 255, 1);
+    border-style: solid;
+    border-width: 1.5px;
+  }
+  .top-bar2-path1 {
+    top: 13.475000381469727px;
+    left: 4.5px;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+  }
+  .top-bar2-path2 {
+    top: 13.524999618530273px;
+    left: 4.5px;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+  }
+  .top-bar2-path3 {
+    top: 13.462499618530273px;
+    left: 14.5px;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+  }
+  .top-bar2-path4 {
+    top: 13.537500381469727px;
+    left: 14.5px;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+  }
+  .top-bar2-text12 {
+    color: var(--dl-color-slate-900);
+    height: auto;
+    text-align: left;
+    line-height: 20px;
+  }
+  .top-bar2-frame104 {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .top-bar2-phones-phone-call {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .top-bar2-group1 {
+    top: -5.000000058430487e-8px;
+    left: -5.000000058430487e-8px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .top-bar2-path5 {
+    top: 3.724250078201294px;
+    left: 3.724463701248169px;
+    width: 17px;
+    height: 17px;
+    position: absolute;
+  }
+  .top-bar2-text14 {
+    color: var(--dl-color-slate-900);
+    height: auto;
+    text-align: left;
+    line-height: 20px;
+  }
+  

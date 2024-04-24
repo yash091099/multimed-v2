@@ -1,0 +1,388 @@
+.refferal-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+  }
+  .refferal-refferal {
+    gap: 48px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 48px;
+    flex-grow: 1;
+    align-self: stretch;
+    align-items: flex-start;
+    border-radius: 4px;
+    flex-direction: column;
+    background-color: var(--dl-color-shades-white);
+  }
+  .refferal-refferal479 {
+    gap: 16px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .refferal-refferal482 {
+    gap: 4px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .refferal-text {
+    color: var(--dl-color-slate-900);
+    height: auto;
+    text-align: left;
+    line-height: 22.5px;
+  }
+  .refferal-text02 {
+    color: var(--dl-color-slate-900);
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-refferal481 {
+    gap: 4px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .refferal-refferal478 {
+    display: flex;
+    overflow: hidden;
+    align-items: flex-start;
+    border-color: rgba(203, 213, 225, 1);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+  }
+  .refferal-refferal476 {
+    gap: 8px;
+    width: 283px;
+    display: flex;
+    padding: 16px;
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-color: rgba(226, 232, 240, 1);
+    border-style: solid;
+    border-width: 0 1px 0 0;
+    background-color: var(--dl-color-shades-white);
+  }
+  .refferal-text04 {
+    color: var(--dl-color-slate-800);
+    height: auto;
+    text-align: left;
+    line-height: 25px;
+  }
+  .refferal-refferal477 {
+    gap: 8px;
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    background-color: var(--dl-color-shades-white);
+  }
+  .refferal-interface-essentialattachmentlink2 {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .refferal-group {
+    top: -0.004999999888241291px;
+    left: -0.004999999888241291px;
+    width: 24.010000228881836px;
+    height: 24.010000228881836px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .refferal-path {
+    top: 4.041304111480713px;
+    left: 10.043183326721191px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+  }
+  .refferal-path1 {
+    top: 9.336888313293457px;
+    left: 9.336888313293457px;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+  }
+  .refferal-path2 {
+    top: 10.043183326721191px;
+    left: 4.041304111480713px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+  }
+  .refferal-text06 {
+    color: var(--dl-color-slate-800);
+    height: auto;
+    text-align: left;
+    line-height: 20px;
+  }
+  .refferal-refferal480 {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .refferal-interface-essential-warning {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .refferal-group1 {
+    top: -5.000000058430487e-8px;
+    left: -5.000000058430487e-8px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .refferal-group2 {
+    top: 0px;
+    left: 0px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .refferal-path3 {
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+  }
+  .refferal-path4 {
+    top: 5px;
+    left: 7.666666507720947px;
+    width: 1px;
+    height: 3px;
+    position: absolute;
+  }
+  .refferal-path5 {
+    top: 10.5px;
+    left: 7.6666646003723145px;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+  }
+  .refferal-text08 {
+    color: rgba(220, 38, 38, 1);
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-text09 {
+    color: var(--dl-color-red-600);
+  }
+  .refferal-refferal281 {
+    gap: 16px;
+    display: flex;
+    overflow: hidden;
+    align-self: stretch;
+    align-items: flex-start;
+    border-color: rgba(226, 232, 240, 1);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 1);
+  }
+  .refferal-refferal295 {
+    gap: 16px;
+    display: flex;
+    padding: 16px 24px;
+    align-self: stretch;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: space-between;
+  }
+  .refferal-refferal278 {
+    gap: 16px;
+    display: flex;
+    align-items: center;
+  }
+  .refferal-text11 {
+    color: var(--dl-color-slate-900);
+    height: auto;
+    text-align: left;
+    line-height: 20px;
+  }
+  .refferal-refferal276 {
+    width: 294px;
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    flex-shrink: 0;
+    border-color: rgba(203, 213, 225, 1);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+  }
+  .refferal-text13 {
+    color: var(--dl-color-slate-400);
+    height: auto;
+    flex-grow: 1;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-arrows-diagrams-arrow {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .refferal-group3 {
+    top: -5.000000058430487e-8px;
+    left: -5.000000058430487e-8px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+  }
+  .refferal-path6 {
+    top: 10px;
+    left: 8px;
+    width: 8px;
+    height: 4px;
+    position: absolute;
+  }
+  .refferal-refferal473 {
+    display: flex;
+    align-self: stretch;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .refferal-refferal380 {
+    gap: 16px;
+    display: flex;
+    padding: 24px 48px;
+    align-self: stretch;
+    align-items: center;
+    flex-shrink: 0;
+    border-color: rgba(203, 213, 225, 1);
+    border-style: solid;
+    border-width: 1px 0;
+    justify-content: space-between;
+    background-color: var(--dl-color-slate-50);
+  }
+  .refferal-text15 {
+    color: var(--dl-color-slate-500);
+    width: 180px;
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-text17 {
+    color: var(--dl-color-slate-500);
+    width: 180px;
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-text19 {
+    color: var(--dl-color-slate-500);
+    width: 180px;
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-refferal381 {
+    gap: 16px;
+    display: flex;
+    padding: 24px 48px;
+    align-self: stretch;
+    align-items: center;
+    flex-shrink: 0;
+    border-color: rgba(226, 232, 240, 1);
+    border-style: solid;
+    border-width: 0 0 1px;
+    justify-content: space-between;
+  }
+  .refferal-refferal483 {
+    gap: 8px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .refferal-text21 {
+    color: var(--dl-color-slate-900);
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-text23 {
+    color: var(--dl-color-brand-lavendardark);
+    height: auto;
+    text-align: left;
+    line-height: 15px;
+  }
+  .refferal-text25 {
+    color: var(--dl-color-slate-900);
+    width: 180px;
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-text27 {
+    color: var(--dl-color-lime-600);
+    width: 180px;
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-refferal382 {
+    gap: 16px;
+    display: flex;
+    padding: 24px 48px;
+    align-self: stretch;
+    align-items: center;
+    flex-shrink: 0;
+    border-color: rgba(226, 232, 240, 1);
+    border-style: solid;
+    border-width: 0 0 1px;
+    justify-content: space-between;
+  }
+  .refferal-text29 {
+    color: var(--dl-color-slate-900);
+    width: 180px;
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-text31 {
+    color: var(--dl-color-slate-900);
+    width: 180px;
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  .refferal-text33 {
+    color: var(--dl-color-slate-400);
+    width: 180px;
+    height: auto;
+    text-align: left;
+    line-height: 17.5px;
+  }
+  
