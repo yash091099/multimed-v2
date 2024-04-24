@@ -1,150 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
-
 #root {
-    /* font-family: sans-serif; */
-    font-family: 'font-HelveticaNeue';
-    /* letter-spacing: -0.023rem; */
-    background-color: #F8FAFC;
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
-    text-rendering: optimizeLegibility !important;
-        --dl-color-lime-50: rgba(247, 254, 231, 1);
-        --dl-color-red-600: rgba(220, 38, 38, 1);
-        --dl-color-gray-500: #595959;
-        --dl-color-gray-700: #999999;
-        --dl-color-gray-900: #D9D9D9;
-        --dl-color-lime-500: rgba(132, 204, 22, 1);
-        --dl-color-lime-600: rgba(101, 163, 13, 1);
-        --dl-color-lime-900: rgba(54, 83, 20, 1);
-        --dl-color-slate-50: rgba(248, 250, 252, 1);
-        --dl-color-slate-100: rgba(241, 245, 249, 1);
-        --dl-color-slate-300: rgba(203, 213, 225, 1);
-        --dl-color-slate-400: rgba(148, 163, 184, 1);
-        --dl-color-slate-500: rgba(100, 116, 139, 1);
-        --dl-color-slate-600: rgba(71, 85, 105, 1);
-        --dl-color-slate-800: rgba(30, 41, 59, 1);
-        --dl-color-slate-900: rgba(15, 23, 42, 1);
-        --dl-size-size-large: 144px;
-        --dl-size-size-small: 48px;
-        --dl-color-brand-mint: rgba(194, 245, 232, 1);
-        --dl-color-danger-300: #A22020;
-        --dl-color-danger-500: #BF2626;
-        --dl-color-danger-700: #E14747;
-        --dl-color-gray-black: #000000;
-        --dl-color-gray-white: #FFFFFF;
-        --dl-size-size-medium: 96px;
-        --dl-size-size-xlarge: 192px;
-        --dl-size-size-xsmall: 16px;
-        --dl-space-space-unit: 16px;
-        --dl-color-primary-100: #003EB3;
-        --dl-color-primary-300: #0074F0;
-        --dl-color-primary-500: #14A9FF;
-        --dl-color-primary-700: #85DCFF;
-        --dl-color-success-300: #199033;
-        --dl-color-success-500: #32A94C;
-        --dl-color-success-700: #4CC366;
-        --dl-size-size-xxlarge: 288px;
-        --dl-color-shades-white: rgba(255, 255, 255, 1);
-        --dl-size-size-maxwidth: 1400px;
-        --dl-radius-radius-round: 50%;
-        --dl-color-brand-lavendar: rgba(169, 181, 255, 1);
-        --dl-space-space-halfunit: 8px;
-        --dl-space-space-sixunits: 96px;
-        --dl-space-space-twounits: 32px;
-        --dl-color-shades-offwhite: rgba(250, 250, 250, 1);
-        --dl-radius-radius-radius2: 2px;
-        --dl-radius-radius-radius4: 4px;
-        --dl-radius-radius-radius8: 8px;
-        --dl-space-space-fiveunits: 80px;
-        --dl-space-space-fourunits: 64px;
-        --dl-space-space-threeunits: 48px;
-        --dl-color-brand-blueprimary: rgba(3, 27, 137, 1);
-        --dl-color-brand-lavendardark: rgba(116, 135, 255, 1);
-        --dl-space-space-oneandhalfunits: 24px;
-        --dl-color-gray-500: #595959;
-        --dl-color-gray-700: #999999;
-        --dl-color-gray-900: #D9D9D9;
-        --dl-color-slate-400: rgba(148, 163, 184, 1);
-        --dl-color-slate-600: rgba(71, 85, 105, 1);
-        --dl-color-slate-900: rgba(15, 23, 42, 1);
-        --dl-size-size-large: 144px;
-        --dl-size-size-small: 48px;
-        --dl-color-danger-300: #A22020;
-        --dl-color-danger-500: #BF2626;
-        --dl-color-danger-700: #E14747;
-        --dl-color-gray-black: #000000;
-        --dl-color-gray-white: #FFFFFF;
-        --dl-size-size-medium: 96px;
-        --dl-size-size-xlarge: 192px;
-        --dl-size-size-xsmall: 16px;
-        --dl-space-space-unit: 16px;
-        --dl-color-primary-100: #003EB3;
-        --dl-color-primary-300: #0074F0;
-        --dl-color-primary-500: #14A9FF;
-        --dl-color-primary-700: #85DCFF;
-        --dl-color-success-300: #199033;
-        --dl-color-success-500: #32A94C;
-        --dl-color-success-700: #4CC366;
-        --dl-size-size-xxlarge: 288px;
-        --dl-color-shades-white: rgba(255, 255, 255, 1);
-        --dl-size-size-maxwidth: 1400px;
-        --dl-radius-radius-round: 50%;
-        --dl-color-brand-lavendar: rgba(169, 181, 255, 1);
-        --dl-space-space-halfunit: 8px;
-        --dl-space-space-sixunits: 96px;
-        --dl-space-space-twounits: 32px;
-        --dl-color-shades-offwhite: rgba(250, 250, 250, 1);
-        --dl-radius-radius-radius2: 2px;
-        --dl-radius-radius-radius4: 4px;
-        --dl-radius-radius-radius8: 8px;
-        --dl-space-space-fiveunits: 80px;
-        --dl-space-space-fourunits: 64px;
-        --dl-space-space-threeunits: 48px;
-        --dl-color-brand-blueprimary: rgba(3, 27, 137, 1);
-        --dl-color-brand-lavendardark: rgba(116, 135, 255, 1);
-        --dl-space-space-oneandhalfunits: 24px;
+  /* font-family: sans-serif; */
+  font-family: 'Helvetica-Neue-Regular';
+  /* letter-spacing: -0.023rem; */
+  background-color: #F8FAFC;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+/* input[type=number] {
+-moz-appearance: textfield;
+} */
 
 @layer base {
 
-    @font-face {
-        font-family: "Helvetica-Neue-Thin";
-        /* font-weight: 200; */
-        src: url("/public/fonts/HelveticaNeueThin.otf");
-    }
+  @font-face {
+      font-family: "Helvetica-Neue-Thin";
+      /* font-weight: 200; */
+      src: url("/fonts/HelveticaNeueThin.otf");
+  }
 
-    @font-face {
-        font-family: "Helvetica-Neue-Light";
-        /* font-weight: 300; */
-        src: url("/public/fonts/HelveticaNeueLight.otf");
-    }
+  @font-face {
+      font-family: "Helvetica-Neue-Light";
+      /* font-weight: 300; */
+      src: url("/fonts/HelveticaNeueLight.otf");
+  }
 
-    @font-face {
-        font-family: "Helvetica-Neue-Italic";
-        font-style: italic;
-        src: url("/public/fonts/HelveticaNeueItalic.ttf");
-    }
+  @font-face {
+      font-family: "Helvetica-Neue-Italic";
+      font-style: italic;
+      src: url("/fonts/HelveticaNeueItalic.ttf");
+  }
 
-    @font-face {
-        font-family: "Helvetica-Neue-Regular";
-        /* font-weight: 400; */
-        src: url("/public/fonts/HelveticaNeueRoman.otf");
-    }
+  @font-face {
+      font-family: "Helvetica-Neue-Regular";
+      /* font-weight: 400; */
+      src: url("/fonts/HelveticaNeueRoman.otf");
+  }
 
-    @font-face {
-        font-family: "Helvetica-Neue-Medium";
-        /* line-height: "30px"; */
-        font-weight: 500;
-        src: url("/public/fonts/HelveticaNeueMedium.otf");
-    }
+  @font-face {
+      font-family: "Helvetica-Neue-Medium";
+      /* line-height: "30px"; */
+      font-weight: 500;
+      src: url("/fonts/HelveticaNeueMedium.otf");
+  }
 
-    @font-face {
-        font-family: "Helvetica-Neue-Bold";
-        font-weight: 700;
-        src: url("/public/fonts/HelveticaNeueBold.otf");
-    }
+  @font-face {
+      font-family: "Helvetica-Neue-Bold";
+      font-weight: 700;
+      src: url("/fonts/HelveticaNeueBold.otf");
+  }
 }
+
+  :root {
+    --loader-size: 100px;
+  }
+
+  /* LoaderOverlay.css */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's above other content */
+  }
+  
+  
+  .loader {
+    width: var(--loader-size);
+    height:var(--loader-size);
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 43vh;
+    right: 50vw;
+    border: 3px solid;
+    border-color: #ade8f4 #ade8f4 transparent #ade8f4;
+    box-sizing: border-box;
+    animation: rotation 1.5s linear infinite;
+  }
+  .loader::after,
+  .loader::before {
+    content: '';  
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid;
+    border-color: transparent transparent #FF3D00 #FF3D00;
+    width: calc(var(--loader-size) - 15px);
+    height: calc(var(--loader-size) - 15px);
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotationBack 0.7s linear infinite;
+    transform-origin: center center;
+  }
+  .loader::before {
+    width: calc(var(--loader-size) - 30px);
+    height: calc(var(--loader-size) - 30px);
+    border-color: #FFF #FFF transparent transparent;
+    animation: rotation 2s linear infinite;
+  }
+
+  .notifications-container{
+    padding: 4px;
+    height: 70vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: justify;
+  }
+      
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 
+  @keyframes rotationBack {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
