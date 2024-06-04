@@ -71,7 +71,7 @@ export default function MarketingFlow() {
                 {!banners?.length && <p className='text-[14px] font-[700] leading-[17.5px] text-end'>No banners available</p>}
             </div>
             <input ref={fileRef} type='file' className='hidden' />
-            {openCreateBannerModal && <CreateBannerModal length={banners.length} refetchBanner={handleRefetch} setOpenCreateBannerModal={setOpenCreateBannerModal} />}
+            {openCreateBannerModal && <CreateBannerModal banners={banners} length={banners.length} refetchBanner={handleRefetch} setOpenCreateBannerModal={setOpenCreateBannerModal} />}
             {openEditBannerModal && <EditBannerModal setOpenEditBannerModal={setOpenEditBannerModal} />}
             {(loading || deleteLoading || queryLoading) && <LoaderOverlay />}
         </div>

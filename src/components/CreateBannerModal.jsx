@@ -22,7 +22,7 @@ export const CREATE_BANNER = gql`
   }
 `;
 
-export default function CreateBannerModal({ setOpenCreateBannerModal, refetchBanner, length, item }) {
+export default function CreateBannerModal({banners, setOpenCreateBannerModal, refetchBanner, length, item }) {
 
   const [saveModal, setSaveModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -63,7 +63,7 @@ const handleFileUpload = async (file) => {
     }
     setLoading(true);
     try {
-      await createBanner({ variables: { url, mobileUrl, index: length + 1 } });
+      await createBanner({ variables: { url, mobileUrl, index: (banners[banners.length - 1]?.index+1 || 0)} });
       toast.success('Banner Added successfully!');
       refetchBanner();
       setOpenCreateBannerModal(false);
